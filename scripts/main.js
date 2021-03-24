@@ -3,7 +3,11 @@ let weapons = Seq();
 Vars.content.units().each(e=>{
   if (e != UnitTypes.crawler) {
 	print(e.weapons.each(w=>{
-	  w != undefined ? weapons.add(w) : null
+	  w.recoil = 0;
+	  w.rotate = true;
+	  w.reload = 5;
+	  w.shootStatusDuration = 0;
+	  w != undefined ? weapons.add(w) : null;
 	}))
   }
 });
