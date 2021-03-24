@@ -10,9 +10,6 @@ Vars.content.units().each(e => {
 	w.bullet.killShooter = false;
     w != undefined ? weapons.add(w) : null;
   });
-});
-
-Vars.content.units().each(u => {
   if (!gamma || u == UnitTypes.gamma) {
     weapons.each(w => {
       u.weapons.add(w);
@@ -20,4 +17,4 @@ Vars.content.units().each(u => {
     u.health = Number.MAX_VALUE;
     u.armor = Number.MAX_VALUE;
   }
-})
+});
