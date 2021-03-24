@@ -1,20 +1,23 @@
-let weapons = Seq();
+let weapons = new Seq;
+let gamma = true; // toggle off to make this for all units
 
-Vars.content.units().each(e=>{
-  if (e != UnitTypes.crawler) {
-    e.weapons.each(w=>{
-      w.recoil = 0
-      w.rotate = true;
-      w.reload = 5;
-      w.shootStatusDuration = 0;
-      w != undefined ? weapons.add(w) : null;
-    })
+Vars.content.units().each(e => {
+  e.weapons.each(w => {
+    w.recoil = 0;
+    w.rotate = true;
+    w.reload = 5;
+    w.shootStatusDuration = 0;
+	w.bullet.killShooter = false;
+    w != undefined ? weapons.add(w) : null;
+  });
+});
+
+Vars.content.units().each(u => {
+  if (!gamma || u == UnitTypes.gamma) {
+    weapons.each(w => {
+      u.weapons.add(w);
+    });
+    u.health = Number.MAX_VALUE;
+    u.armor = Number.MAX_VALUE;
   }
-});
-
-weapons.each(w => {
-  UnitTypes.gamma.weapons.add(w);
-});
-
-UnitTypes.gamma.health = Number.MAX_VALUE;
-UnitTypes.gamma.armor = Number.MAX_VALUE;
+})
