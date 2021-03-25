@@ -1,1 +1,1 @@
-require("gamma");
+require("gamma.js");
