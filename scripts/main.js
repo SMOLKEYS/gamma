@@ -1,1 +1,1 @@
-require("cursed");
+require("gamma");
